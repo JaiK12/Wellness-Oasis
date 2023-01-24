@@ -4,6 +4,7 @@ import About from "@/views/About.vue";
 import SignUp from "@/views/SignUp.vue";
 import Login from "@/views/Login.vue";
 import Diagnose from "@/views/DiagnoseUser.vue"
+import ObesityDiagnoseForm from '@/views/ObesityDiagnoseForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       name: "diagnose",
       component: Diagnose,
     },
+		{
+			path: "/diagnose-obesity",
+			name: "diagnoseDisease-obesity",
+			component: ObesityDiagnoseForm
+		}
   ],
 });
 
