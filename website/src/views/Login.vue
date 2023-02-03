@@ -54,6 +54,7 @@
         } else {
             getEmail()
             getRowNumber()
+						toast("logged in")
         }    
     }
 </script>

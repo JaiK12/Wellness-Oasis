@@ -36,8 +36,8 @@
 
 <template>
   <main>
-		<div v-if="!store.signedIn">
-			
+		<div v-if="!store.signedIn" class="w-2/5 text-center relative left-1/3">
+			<h1 class="text-5xl mt-10 leading-relaxed">Making health accessible in a more comfortable way</h1>
 		</div>
 
 		<h1 v-if="loading && store.signedIn" class='text-center text-5xl mt-10'>loading...</h1>
@@ -47,7 +47,7 @@
 			
 			<div id="unregistered" class="text-center mt-20 bg-green-700 w-32 text-white p-3 rounded-md relative left-10" v-else>
 					<button>
-						<RouterLink to="/diagnose" >Diagnose</RouterLink>
+						<RouterLink to="/diagnose" class="bg-gray-100 text-black p-3 rounded-md shadow-2xl">Diagnose</RouterLink>
 					</button>
 			</div>
 		</div>

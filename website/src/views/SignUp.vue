@@ -32,6 +32,7 @@
             toast("valid email")
         } else {    
             addUser(name.value, email.value, password.value)
+						toast("signed up!")
         }    
     }
 </script>

@@ -22,17 +22,26 @@ const NavElements = [
         <div v-for="element in NavElements" class="links">
             <RouterLink :to="element.routeUrl" style="color: darkslategrey; text-decoration: none; margin-right: 0.5em; font-family: Inter">{{ element.routeName }}</RouterLink> 
         </div>
-        <div class="register">
-            <a href="/signUp">Sign Up</a>
+        <div class="register" v-if="!signedIn.signedIn">
+            <a href="/signUp" class="mr-6">Sign Up</a>
             <a href="/login">Login</a>
         </div>
+				<div class="login" v-if="signedIn.signedIn">
+					<button
+						@click="() => { 
+											signedIn.signedIn = false; 
+											signedIn.userName = ''; 
+											signedIn.rowNumber = 0
+										}
+										"
+					>Log Out</button>
+				</div>
     </nav>     
 </template>
 
 <style scoped>
 nav{
     display: flex;
-    
 }
 
 nav > .links{
@@ -41,13 +50,13 @@ nav > .links{
    padding: 1em;
 }
 
-nav > .register{
+nav > .register, .login{
     position: relative;
     left: 75%;
     margin-top: 1em;
 }
 
-nav > .register > a{
+nav > .register, .login > a, button{
    margin-right: 1em; 
    font-family: Inter;
    background: none;
