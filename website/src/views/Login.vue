@@ -50,7 +50,7 @@
         if (email.value.trim().length < 1){
             toast("fill all fields")
         } else if (!email.value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            toast("valid email")
+            toast("enter valid email")
         } else {
             getEmail()
             getRowNumber()
@@ -60,9 +60,8 @@
 </script>
 
 <template>
-    <div id="form" class="relative left-[40%] translateX-[-50%] mt-10">
-        <input v-model="email" placeholder="enter email" class="border border-gray p-3 block outline-none mb-2 text-center">
-
-        <button @click="submit()" class="relative left-[4.5%] bg-green-800 p-3 mt-3 text-slate-100 rounded-full pr-5 pl-5">Submit</button>
-    </div>    
+  <div id="form" class="bg-gray-200 p-6 rounded-md border border-gray-300 shadow-2xl">
+    <input v-model="email" placeholder="enter email" class="border border-gray p-3 block outline-none mb-5 text-center shadow-inner border border-gray-300 rounded-3xl">
+    <button @click="submit()" class="mx-16 bg-green-800 p-3 mt-3 text-white rounded-full pr-5 pl-5 shadow-2xl border border-gray-300">Submit</button>
+    </div>
 </template>

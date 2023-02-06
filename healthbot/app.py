@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = "019phungalala694200"
 app.config['SECRET KEY'] =  '019phungalala694200'
 
-
 @app.route('/chatbot', methods=['POST'])
 
 def bot():
