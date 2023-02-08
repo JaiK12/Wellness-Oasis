@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+	<title>Healthbot</title>
+	<link
+			rel="shortcut icon"
+			href="{{url_for('static', filename='bot.jpeg')}}"/>
+		
+	<link rel="stylesheet" href="{{url_for('static', filename="main.css")}}"/>
+
+</head>
+
+<body>
+	<img src="{{url_for('static', filename="bot.jpeg")}}" class="icon" />
+	<h3>Healthbot	</h3>
+	<form action='/chatbot' method="post">
+		<input type="text" name="healthmessage" placeholder="Enter your message" required/>
+		<input type="submit" value="Ask bot"/>
+	</form>
+	
+	<div class="result">{{ result }}</div>
+	
+	
+
+	
+</body>
+
+
