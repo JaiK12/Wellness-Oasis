@@ -11,6 +11,10 @@ const NavElements = [
         routeUrl: '/'
     },
     {
+        routeName: 'Diagnose',
+        routeUrl: '/diagnose'
+    },
+    {
         routeName: 'About',
         routeUrl: '/about'
     }
@@ -52,7 +56,7 @@ nav > .links{
 
 nav > .register, .login{
     position: relative;
-    left: 75%;
+    left: 65%;
     margin-top: 1em;
 }
 
