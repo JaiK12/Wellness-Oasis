@@ -1,7 +1,8 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref , onMounted} from 'vue'
     import supabase from '../config/supabaseClient'
     import { useToast } from "vue-toastification";
+		import { signInWithGoogle } from "@/config/loginProviders"
 
     const toast = useToast()
 
@@ -17,10 +18,8 @@
             .from('UserData')
             .insert([{ email, name, password }])
             .select()
-
         if (data)
             dataUsers.value = data 
-
         if (error)
             console.log(error)  
     }
@@ -35,6 +34,8 @@
 						toast("signed up!")
         }    
     }
+
+
 </script>
 
 <template>
@@ -43,8 +44,12 @@
         <input v-model="email" placeholder="enter email" class="border border-gray p-3 block outline-none mb-5 text-center shadow-inner border border-gray-300 rounded-3xl">
         <input v-model="password" placeholder="enter password" class="border border-gray p-3 block outline-none mb-5 text-center shadow-inner border border-gray-300 rounded-3xl">
 
-        <button @click="submit()" class="mx-16 bg-green-800 p-3 mt-3 text-white rounded-full pr-5 pl-5 shadow-2xl border border-gray-300">Submit</button>
-    </div>    
+        <button @click="submit()" class="mx-16 bg-green-800 p-3 mt-3 text-white rounded-full pr-7 pl-5 shadow-2xl border border-gray-300 block">Submit</button>
+				<button type="button" class="font-[Roboto-Medium] block bg-white pr-3 mt-5 rounded-full shadow-md" @click="signInWithGoogle()">
+					<img src='/google/google_signin_buttons/web/vector/btn_google_light_normal_ios.svg' class="inline rounded-full">
+					Sign in with Google
+				</button>
+		</div>    
 </template>
 
 <style>
@@ -52,6 +57,6 @@
 	position: relative;
 	margin-top: 10vh;
 	margin-left: 42.5%;
-	width: 20%;
+	width: 30%;
 }
 </style>

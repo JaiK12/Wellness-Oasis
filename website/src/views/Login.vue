@@ -1,15 +1,14 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref , onMounted} from 'vue'
     import supabase from '@/config/supabaseClient';
     import { useToast } from 'vue-toastification';
     import { useSigned } from '@/stores/signedIn';
+		import { signInWithGoogle } from "@/config/loginProviders"
 
     const email = ref("");
     const toast = useToast()
     const signedIn = useSigned()
 
-
-    console.log(signedIn.rowNumber)
     const getRowNumber = async () => {
 		// check if given email exists in databse
         const { data, error } = await supabase
@@ -57,11 +56,26 @@
 						toast("logged in")
         }    
     }
+
+		onMounted(async () => {
+			const { data: { user } } = await supabase.auth.getUser();
+			console.log(user.email)
+		})
 </script>
 
 <template>
   <div id="form" class="bg-gray-200 p-6 rounded-md border border-gray-300 shadow-2xl">
     <input v-model="email" placeholder="enter email" class="border border-gray p-3 block outline-none mb-5 text-center shadow-inner border border-gray-300 rounded-3xl">
     <button @click="submit()" class="mx-16 bg-green-800 p-3 mt-3 text-white rounded-full pr-5 pl-5 shadow-2xl border border-gray-300">Submit</button>
-    </div>
+		<button 
+			type="button" 
+			class="font-[Roboto-Medium] block bg-white pr-3 mt-5 rounded-full shadow-md" 
+			@click="() => { 
+				signInWithGoogle();
+				store.googleSignedIn = true;
+			">
+				<img src='/google/google_signin_buttons/web/vector/btn_google_light_normal_ios.svg' class="inline rounded-full">
+				Log in with Google
+			</button>
+   </div>
 </template>

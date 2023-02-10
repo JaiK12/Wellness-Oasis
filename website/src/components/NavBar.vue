@@ -19,6 +19,10 @@ const NavElements = [
         routeUrl: '/about'
     }
 ]
+
+async function signout() {
+  const { error } = await supabase.auth.signOut()
+}
 </script>
 
 <template>
@@ -35,7 +39,8 @@ const NavElements = [
 						@click="() => { 
 											signedIn.signedIn = false; 
 											signedIn.userName = ''; 
-											signedIn.rowNumber = 0
+											signedIn.rowNumber = 0;
+											signOut()
 										}
 										"
 					>Log Out</button>
